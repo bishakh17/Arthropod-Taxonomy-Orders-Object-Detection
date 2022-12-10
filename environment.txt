@@ -1,0 +1,31 @@
+python=3.10.8
+device=Apple silicon(M2)
+OS=macOS 13.0.1
+git=2.38.1
+pyenv=2.3.6
+
+Currently yolov5 does not support Apple silicon(mps) even though pytorch does so it uses CPU
+
+It works flawlessly even with linux using nvidea gpus with cuda=11.6(run below command):
+pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu116
+
+please adjust batch size according to available gpu memory.
+Training is not feasible with apple silicon as GPU is not used
+please train with nvidea gpus(My access to nvidea gpus was limited by time)
+
+NOTE: 
+pyenv installations of python doesn't come with xz libraries installed so it gives error while importing torchvision. use:
+pyenv uninstall 3.10.8 #if already installed
+brew install xz #homebrew should be installed and added to path
+pyenv install 3.10.8
+#conda virtual environments don't have the above problem 
+
+
+NOTE:
+The data I found on kaggle was not in coco format so i converted it into coco and uploaded to drive
+If you are importing data through kaggle api(uncomment the code in cell 5 and run)
+Recommended: Download the dataset using the drive link. If it is zipped, unzip it and name the folder 'coco'.
+
+NOTE:
+please make sure .gitconfig file is set up in the home directory
+
